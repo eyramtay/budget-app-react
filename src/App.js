@@ -1,11 +1,13 @@
 
-import { Container, Grid, Header, Icon, Segment, Statistic } from 'semantic-ui-react';
+import { Button, Container, Form, Grid, Header, Icon, Segment, Statistic } from 'semantic-ui-react';
 import './App.css';
+import ButtonSaveOrCancel from './components/ButtonSaveOrCancel';
+import MainHeader from './components/MainHeader';
 
 function App() {
   return (
     <Container>
-      <Header as="h1">Budget</Header>
+      <MainHeader title="Budget" />
       <Statistic size='small'>
         <Statistic.Label>Your Balance</Statistic.Label>
         <Statistic.Value>2,500.53</Statistic.Value>
@@ -33,19 +35,40 @@ function App() {
         </Grid>
       </Segment>
 
-      <Header as="h3">History</Header>
+      <MainHeader title="History" type="h3" />
+      
       <Segment color="red">
         <Grid columns={3} textAlign="right">
           <Grid.Row>
-            <Grid.Column>Something</Grid.Column>
-            <Grid.Column>$10.00</Grid.Column>
-            <Grid.Column>
+            <Grid.Column width={10} textAlign="left">Something</Grid.Column>
+            <Grid.Column width={3} textAlign="right">$10.00</Grid.Column>
+            <Grid.Column width={3}>
               <Icon name="edit" bordered/>
               <Icon name="trash" bordered/>
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Segment>
+
+      <MainHeader title="Add New Transaction" type="h3" />
+      
+      <Form unstackable>
+        <Form.Group>
+          <Form.Input 
+          icon="tags"
+          width={12}
+          label="Description"
+          placeholder="New shinny thing" 
+          />
+          <Form.Input 
+          width={4} 
+          label="Value" 
+          placeholder="100.00" 
+          icon="dollar" 
+          iconPosition="left"></Form.Input>
+        </Form.Group>
+       <ButtonSaveOrCancel />
+      </Form>
 
     </Container>
   );
